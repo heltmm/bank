@@ -5,7 +5,8 @@ function Contact(first, last){
   this.lastName = last;
   this.addresses = [];
 }
-function Address(street1, city1, state1){
+function Address(type1, street1, city1, state1){
+  this.type = type1;
   this.street = street1;
   this.city = city1;
   this.state = state1;
@@ -14,11 +15,12 @@ Contact.prototype.firstAndLast = function () {
   return this.firstName + " "+this.lastName;
 }
 Address.prototype.fullAddress = function () {
-  return this.street+", " + this.city+ ", "+this.state;
+  return this.type + ", "+this.street+", " + this.city+ ", "+this.state;
 }
 function resetFields(){
   $("input#new-first-name").val("");
   $("input#new-last-name").val("");
+  $("input.new-type").val("");
   $("input.new-street").val("");
   $("input.new-city").val("");
   $("input.new-state").val("");
@@ -26,7 +28,11 @@ function resetFields(){
 /////FRONT END
 $(document).ready(function() {
   $("#add-address").click(function () {
-    $("#new-addresses").append('<div class="new-address">' +
+    $("#new-addresses").append('<div class="new-address added">' +
+    '<div class="form-group">' +
+      '<label for="new-type">Type</label>' +
+      '<input type="text" class="form-control new-type">' +
+    '</div>'+
       '<div class="form-group">' +
         '<label for="new-street">Street</label>' +
         '<input type="text" class="form-control new-street">' +
@@ -43,6 +49,7 @@ $(document).ready(function() {
   });
   $("#new-contact").submit(function(event) {
     event.preventDefault();
+    $(".added").remove();
 
     var firstNameInputted = $("#new-first-name").val();
     var lastNameInputted = $("#new-last-name").val();
@@ -50,10 +57,11 @@ $(document).ready(function() {
     var newContact = new Contact(firstNameInputted, lastNameInputted);
 
     $(".new-address").each(function (){
+      var typeInputted = $(this).find(".new-type").val();
       var streetInputted = $(this).find(".new-street").val();
       var cityInputted = $(this).find(".new-city").val();
       var stateInputted = $(this).find(".new-state").val();
-      var newAddress = new Address(streetInputted, cityInputted, stateInputted);
+      var newAddress = new Address(typeInputted, streetInputted, cityInputted, stateInputted);
       newContact.addresses.push(newAddress);
     });
 

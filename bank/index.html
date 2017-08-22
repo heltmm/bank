@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Bank Account</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form id="accountRegisterForm">
+            <h1>Register a new Account:</h1>
+            <div class="form-group">
+              <label for="nameInput">Name:</label>
+              <input type="text" id="nameInput">
+            </div>
+            <div class="form-group">
+              <label for="initialInput">Initial Deposit:</label>
+              <input type="text" id="initialInput">
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <form id="DepositorWithdrawForm">
+            <h1>Deposit or Withdraw Funds:</h1>
+            <div class="form-group">
+              <label for="depositInput">Deposit Amount:</label>
+              <input type="text" id="depositInput">
+            </div>
+            <div class="form-group">
+              <label for="withdrawInput">WithDraw Amount:</label>
+              <input type="text" id="withdrawInput">
+            </div>
+            <button class="btn btn-primary" type="button" id="changeMoney">Withdraw/Deposit</button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <h2>Current Ballance:<span id="currentBallance"></span></h2>
+      </div>
+    </div>
+  </body>
+</html>
